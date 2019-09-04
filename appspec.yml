@@ -1,0 +1,17 @@
+version: 0.0
+os: linux
+files:
+    - source: /
+      destination: /var/www/html/codeDeployQiita
+permissions:
+    - object: /var/www/html/codeDeployQiita
+      pattern: "**"
+      owner: nginx
+      group: nginx
+      mode: 755
+      type:
+        - file
+hooks:
+    BeforeInstall:
+     - location: scripts/initialize.sh
+       runas: root
